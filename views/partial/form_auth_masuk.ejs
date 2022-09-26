@@ -1,0 +1,24 @@
+@if (session()->has('daftarBerhasil'))
+    <div class="alert alert-success alert-dismissable fade show">
+        {{ session('daftarBerhasil') }}
+        <button type="button" class="btn-close"></button>
+    </div>
+@endif
+
+<main class="form-registration d-flex flex-column align-items-center gap-2">
+    <h1>Masuk</h1>
+    <form action="/auth/masuk" method="post" class="form form-float">
+        @csrf
+        <div class="form-floating">
+            <input type="text" id="emailInput" name="email" value="{{ old('email') }}"
+                class="form-control rounded-top @error('email') is-invalid @enderror" required>
+            <label for="emailInput">Email: </label>
+        </div>
+        <div class="form-floating">
+            <input type="password" id="passwordInput" name="password" value="{{ old('password') }}"
+                class="form-control rounded-top @error('password') is-invalid @enderror" required>
+            <label for="passwordInput">Password: </label>
+        </div>
+        <input type="submit" class="btn btn-primary" value="Masuk">
+    </form>
+</main>
